@@ -43,8 +43,7 @@ struct TimelineView: View {
             .toolbar { toolbarContent }
             .searchable(text: $searchText, prompt: "搜索笔记")
             .sheet(isPresented: $showCompose) {
-                // Task 9 实现后替换为 ComposeView()
-                Text("ComposeView - coming soon")
+                ComposeView()
             }
             .sheet(isPresented: $showExport) {
                 // Task 11 实现后替换为 ExportView(filteredNotes:allNotes:)
