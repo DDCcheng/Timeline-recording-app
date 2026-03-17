@@ -1,15 +1,13 @@
 workflows:
-  ios-release:
-    name: Superbrain iOS Release
+  ios-build-check:
+    name: Superbrain iOS Build Check
     max_build_duration: 60
     instance_type: mac_mini_m2
 
     environment:
-      xcode: latest # Xcode 16+，支持 Swift 5.9 / iOS 17 SDK
+      xcode: latest
       vars:
-        BUNDLE_ID: com.personal.superbrain
         SCHEME: Superbrain
-        XCODEGEN_VERSION: "2.42.0"
 
     scripts:
       - name: Install xcodegen
@@ -26,6 +24,15 @@ workflows:
             -scheme "$SCHEME" \
             -project Superbrain.xcodeproj
 
+      - name: Build
+        script: |
+          xcodebuild build \
+            -scheme "$SCHEME" \
+            -project Superbrain.xcodeproj \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcpretty
+
       - name: Run unit tests
         script: |
           xcodebuild test \
@@ -35,25 +42,6 @@ workflows:
             CODE_SIGNING_ALLOWED=NO \
             | xcpretty --report junit --output test-results/results.xml
         test_report: test-results/results.xml
-
-      - name: Build & Archive (IPA)
-        script: |
-          xcodebuild archive \
-            -scheme "$SCHEME" \
-            -project Superbrain.xcodeproj \
-            -destination 'generic/platform=iOS' \
-            -archivePath build/Superbrain.xcarchive \
-            CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID"
-
-          xcodebuild -exportArchive \
-            -archivePath build/Superbrain.xcarchive \
-            -exportPath build/ipa \
-            -exportOptionsPlist exportOptions.plist
-
-    artifacts:
-      - build/ipa/*.ipa
-      - build/Superbrain.xcarchive
 
     publishing:
       email:
