@@ -4,6 +4,8 @@ import SwiftData
 
 @main
 struct SuperbrainApp: App {
+    @StateObject private var appearance = AppearanceManager()
+
     let modelContainer: ModelContainer = {
         let schema = Schema([Note.self, NoteImage.self, Tag.self, EditRecord.self])
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -12,8 +14,10 @@ struct SuperbrainApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Text("Models loaded")
+            TimelineView()
                 .modelContainer(modelContainer)
+                .environmentObject(appearance)
+                .preferredColorScheme(appearance.mode.colorScheme)
         }
     }
 }
