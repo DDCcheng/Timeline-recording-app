@@ -24,6 +24,10 @@ targets:
     type: bundle.unit-test
     platform: iOS
     sources: [SuperbrainTests]
+    settings:
+      base:
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Superbrain.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Superbrain"
+        BUNDLE_LOADER: "$(TEST_HOST)"
     dependencies:
       - target: Superbrain
 packages:

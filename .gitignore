@@ -1,7 +1,20 @@
+# macOS
 .DS_Store
-*.xcuserstate
+.AppleDouble
+.LSOverride
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
 xcuserdata/
+*.xcuserstate
 DerivedData/
-.build/
+*.xcarchive
+
+# SPM / xcodegen 生成物
 *.resolved
+.build/
+
+# 工具状态
 .superpowers/
