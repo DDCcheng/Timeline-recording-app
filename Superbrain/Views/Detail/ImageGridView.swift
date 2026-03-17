@@ -22,8 +22,8 @@ struct ImageGridView: View {
             VStack(spacing: 2) {
                 ForEach(rows.indices, id: \.self) { i in
                     HStack(spacing: 2) {
-                        ForEach(rows[i], id: \.self) { img in
-                            imageCell(img)
+                        ForEach(rows[i].indices, id: \.self) { j in
+                            imageCell(rows[i][j])
                         }
                     }
                 }
