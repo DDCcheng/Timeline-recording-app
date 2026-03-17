@@ -91,8 +91,7 @@ struct TimelineView: View {
             }
             .listStyle(.plain)
             .navigationDestination(for: Note.self) { note in
-                // Task 10 实现后替换为 NoteDetailView(note: note, imageStorageService: imageStorageService)
-                Text("NoteDetailView - coming soon")
+                NoteDetailView(note: note, imageStorageService: imageStorageService)
             }
         }
     }
