@@ -9,7 +9,7 @@ final class PredicateBuilder {
 
     @discardableResult
     func withText(_ text: String) -> Self {
-        guard !text.trimmingCharacters(in: .whitespaces).isEmpty else { return self }
+        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return self }
         predicates.append(NSPredicate(format: "content CONTAINS[cd] %@", text))
         return self
     }
@@ -28,7 +28,7 @@ final class PredicateBuilder {
     @discardableResult
     func withTags(_ tagNames: Set<String>) -> Self {
         guard !tagNames.isEmpty else { return self }
-        predicates.append(NSPredicate(format: "ANY tags.name IN %@", tagNames as CVarArg))
+        predicates.append(NSPredicate(format: "ANY tags.name IN %@", Array(tagNames) as CVarArg))
         return self
     }
 

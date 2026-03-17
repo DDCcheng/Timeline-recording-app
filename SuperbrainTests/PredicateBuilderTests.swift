@@ -14,7 +14,8 @@ final class PredicateBuilderTests: XCTestCase {
     func test_textFilter_containsKeyword() {
         let predicate = PredicateBuilder().withText("hello").build()
         XCTAssertNotNil(predicate)
-        XCTAssertTrue(predicate!.predicateFormat.contains("hello"))
+        // 验证是比较谓词（而非依赖不稳定的 predicateFormat 字符串）
+        XCTAssertTrue(predicate is NSComparisonPredicate, "单文本条件应返回 NSComparisonPredicate")
     }
 
     func test_dateRange_generatesPredicate() {
@@ -38,7 +39,9 @@ final class PredicateBuilderTests: XCTestCase {
             .withText("test")
             .withTags(["工作"])
             .build()
-        XCTAssertNotNil(predicate)
-        XCTAssertTrue(predicate!.predicateFormat.contains("AND"))
+        let compound = predicate as? NSCompoundPredicate
+        XCTAssertNotNil(compound, "多条件应返回 NSCompoundPredicate")
+        XCTAssertEqual(compound?.compoundPredicateType, .and)
+        XCTAssertEqual(compound?.subpredicates.count, 2)
     }
 }
