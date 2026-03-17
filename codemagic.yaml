@@ -5,8 +5,7 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
-      xcode: latest          # Xcode 16+，支持 Swift 5.9 / iOS 17 SDK
-      cocoapods: none
+      xcode: latest # Xcode 16+，支持 Swift 5.9 / iOS 17 SDK
       vars:
         BUNDLE_ID: com.personal.superbrain
         SCHEME: Superbrain
