@@ -4,7 +4,7 @@ import SwiftData
 
 @Model
 final class Tag {
-    @Attribute(.unique) var name: String
+    @Attribute(.unique) var name: String = ""
     var createdAt: Date = Date()
 
     @Relationship(inverse: \Note.tags)

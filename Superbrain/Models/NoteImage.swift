@@ -10,6 +10,8 @@ final class NoteImage {
     var note: Note?
 
     /// 文件名由 id 派生，完整路径：Documents/images/<noteID>/<fileName>
+    /// @Transient 防止 SwiftData 将计算属性纳入 schema 持久化
+    @Transient
     var fileName: String { "\(id.uuidString).jpg" }
 
     init(order: Int) {
