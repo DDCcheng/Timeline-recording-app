@@ -17,10 +17,7 @@ struct NoteDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Markdown 渲染
-                let attributed = (try? AttributedString(
-                    markdown: note.content,
-                    options: .init(interpretedSyntax: .inlinesOnly)
-                )) ?? AttributedString(note.content)
+                let attributed = (try? AttributedString(markdown: note.content)) ?? AttributedString(note.content)
                 Text(attributed)
                     .frame(maxWidth: .infinity, alignment: .leading)
 

@@ -10,10 +10,7 @@ struct NoteCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // Markdown 渲染（最多5行截断）
-            let attributed = (try? AttributedString(
-                markdown: note.content,
-                options: .init(interpretedSyntax: .inlinesOnly)
-            )) ?? AttributedString(note.content)
+            let attributed = (try? AttributedString(markdown: note.content)) ?? AttributedString(note.content)
             Text(attributed)
                 .lineLimit(5)
 
