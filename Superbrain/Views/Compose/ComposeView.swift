@@ -47,7 +47,7 @@ struct ComposeView: View {
                 }
             }
             .alert("图片保存失败", isPresented: $showImageError) {
-                Button("好") {}
+                Button("好") { dismiss() }
             } message: {
                 Text("请检查存储空间后重试")
             }
@@ -249,6 +249,8 @@ struct ComposeView: View {
         }
 
         try? modelContext.save()
-        dismiss()
+        if !showImageError {
+            dismiss()
+        }
     }
 }
