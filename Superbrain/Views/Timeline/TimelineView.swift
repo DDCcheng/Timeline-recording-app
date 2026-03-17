@@ -46,8 +46,10 @@ struct TimelineView: View {
                 ComposeView()
             }
             .sheet(isPresented: $showExport) {
-                // Task 11 实现后替换为 ExportView(filteredNotes:allNotes:)
-                Text("ExportView - coming soon")
+                ExportView(
+                    filteredNotes: filteredNotes,
+                    allNotes: (try? modelContext.fetch(FetchDescriptor<Note>())) ?? []
+                )
             }
             .sheet(isPresented: $showSearchOverlay) {
                 NavigationStack {
