@@ -32,10 +32,7 @@ struct EditHistoryView: View {
             .sheet(item: $selectedRecord) { record in
                 NavigationStack {
                     ScrollView {
-                        let attributed = (try? AttributedString(
-                            markdown: record.content,
-                            options: .init(interpretedSyntax: .inlinesOnly)
-                        )) ?? AttributedString(record.content)
+                        let attributed = (try? AttributedString(markdown: record.content)) ?? AttributedString(record.content)
                         Text(attributed)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()

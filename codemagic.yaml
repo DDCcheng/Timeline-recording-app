@@ -26,6 +26,7 @@ workflows:
 
       - name: Build
         script: |
+          set -o pipefail
           xcodebuild build \
             -scheme "$SCHEME" \
             -project Superbrain.xcodeproj \
@@ -35,6 +36,7 @@ workflows:
 
       - name: Run unit tests
         script: |
+          set -o pipefail
           xcodebuild test \
             -scheme "$SCHEME" \
             -project Superbrain.xcodeproj \

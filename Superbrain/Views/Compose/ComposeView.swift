@@ -81,10 +81,7 @@ struct ComposeView: View {
     private var previewContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                let attributed = (try? AttributedString(
-                    markdown: content,
-                    options: .init(interpretedSyntax: .inlinesOnly)
-                )) ?? AttributedString(content)
+                let attributed = (try? AttributedString(markdown: content)) ?? AttributedString(content)
                 Text(attributed)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
