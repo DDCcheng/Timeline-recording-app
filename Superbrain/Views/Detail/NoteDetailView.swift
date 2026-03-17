@@ -19,7 +19,7 @@ struct NoteDetailView: View {
                 // Markdown 渲染
                 let attributed = (try? AttributedString(
                     markdown: note.content,
-                    options: .init(interpretedSyntax: .inlinesOnlyPreservingWhitespace)
+                    options: .init(interpretedSyntax: .inlinesOnly)
                 )) ?? AttributedString(note.content)
                 Text(attributed)
                     .frame(maxWidth: .infinity, alignment: .leading)

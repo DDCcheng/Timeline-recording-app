@@ -83,7 +83,7 @@ struct ComposeView: View {
             VStack(alignment: .leading, spacing: 12) {
                 let attributed = (try? AttributedString(
                     markdown: content,
-                    options: .init(interpretedSyntax: .inlinesOnlyPreservingWhitespace)
+                    options: .init(interpretedSyntax: .inlinesOnly)
                 )) ?? AttributedString(content)
                 Text(attributed)
                     .frame(maxWidth: .infinity, alignment: .leading)

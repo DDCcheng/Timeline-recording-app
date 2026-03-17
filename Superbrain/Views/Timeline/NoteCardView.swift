@@ -12,7 +12,7 @@ struct NoteCardView: View {
             // Markdown 渲染（最多5行截断）
             let attributed = (try? AttributedString(
                 markdown: note.content,
-                options: .init(interpretedSyntax: .inlinesOnlyPreservingWhitespace)
+                options: .init(interpretedSyntax: .inlinesOnly)
             )) ?? AttributedString(note.content)
             Text(attributed)
                 .lineLimit(5)

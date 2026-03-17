@@ -34,7 +34,7 @@ struct EditHistoryView: View {
                     ScrollView {
                         let attributed = (try? AttributedString(
                             markdown: record.content,
-                            options: .init(interpretedSyntax: .inlinesOnlyPreservingWhitespace)
+                            options: .init(interpretedSyntax: .inlinesOnly)
                         )) ?? AttributedString(record.content)
                         Text(attributed)
                             .frame(maxWidth: .infinity, alignment: .leading)
