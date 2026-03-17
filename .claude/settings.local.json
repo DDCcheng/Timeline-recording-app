@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash \"C:/Users/35562/.claude/plugins/cache/superpowers-marketplace/superpowers/5.0.4/skills/brainstorming/scripts/start-server.sh\" --project-dir \"E:/桌面/superbrain\")"
+    ]
+  }
+}

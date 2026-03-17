@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/35562/.claude/plugins/cache/superpowers-marketplace/superpowers/5.0.4/**)",
+      "Read(**)",
+      "Write(**)",
+      "Edit(**)",
+      "Bash(git*)",
+      "Bash(mkdir*)",
+      "Bash(ls*)",
+      "Bash(find*)",
+      "Bash(rm*)",
+      "Bash(xcodegen*)",
+      "Bash(xcodebuild*)",
+      "Bash(xcrun*)",
+      "Bash(brew*)",
+      "Bash(echo*)",
+      "Bash(cat*)",
+      "Bash(cp*)",
+      "Bash(mv*)"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  }
+}
