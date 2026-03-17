@@ -35,6 +35,12 @@ final class ImageStorageServiceTests: XCTestCase {
 
         sut.deleteImages(for: testNoteID)
 
+        // 验证目录本身已被删除
+        let dirURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("images")
+            .appendingPathComponent(testNoteID.uuidString)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: dirURL.path), "目录应已删除")
+        // 同时验证 load 返回 nil
         let loaded = sut.load(imageID: imageID, noteID: testNoteID)
         XCTAssertNil(loaded)
     }
